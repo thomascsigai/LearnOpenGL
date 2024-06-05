@@ -32,6 +32,28 @@ int main()
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
+    // vertex data and buffers
+    // ----------------------------------------
+
+    // vertex data to render a triangle
+    float vertices[] = {
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.0f,  0.5f, 0.0f
+    };
+
+    // buffer generation
+    unsigned int VBO; // buffer ID
+    glGenBuffers(1, &VBO);
+
+    // binding the created buffer 
+    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    // copying previously created buffer data into buffer's memory
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+
+    // render loop
+    // ----------------------------------------
     while (!glfwWindowShouldClose(window))
     {
         // input
