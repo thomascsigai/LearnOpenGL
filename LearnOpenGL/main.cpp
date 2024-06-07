@@ -49,30 +49,50 @@ int main()
     // vertex data and buffers
     // ----------------------------------------
 
-    // vertex data to render a triangle
-    float vertices[] = {
+    // vertex data to render the first triangle
+    float verticesFirstTriangle[] = {
     -0.8f, -0.5f, 0.0f,
     -0.5f, 0.5f, 0.0f,
-    -0.2f,  -0.5f, 0.0f,
+    -0.2f,  -0.5f, 0.0f
+    };
+
+    float verticesSecondTriangle[] = {
     0.8f, -0.5f, 0.0f,
     0.5f, 0.5f, 0.0f,
     0.2f,  -0.5f, 0.0f
     };
 
-    unsigned int VBO, VAO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
+    unsigned int VBO1, VAO1, VBO2, VAO2;
+    glGenVertexArrays(1, &VAO1);
+    glGenBuffers(1, &VBO1);
+    glGenVertexArrays(1, &VAO2);
+    glGenBuffers(1, &VBO2);
+
 
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(VAO);
+    glBindVertexArray(VAO1);
 
     // binding the created buffer 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ARRAY_BUFFER, VBO1);
     // copying previously created buffer data into buffer's memory
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesFirstTriangle), verticesFirstTriangle, GL_STATIC_DRAW);
 
     // configure vertex attributes
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+    glEnableVertexAttribArray(0);
+
+
+
+    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
+    glBindVertexArray(VAO2);
+
+    // binding the created buffer 
+    glBindBuffer(GL_ARRAY_BUFFER, VBO2);
+    // copying previously created buffer data into buffer's memory
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticesSecondTriangle), verticesSecondTriangle, GL_STATIC_DRAW);
+
+    // configure vertex attributes
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
     glEnableVertexAttribArray(0);
 
 
@@ -153,13 +173,23 @@ int main()
         glClear(GL_COLOR_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        glBindVertexArray(VAO1);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glBindVertexArray(VAO2);
+        glDrawArrays(GL_TRIANGLES, 0, 3);
 
         // check and call events and swap the buffers
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
+
+    glDeleteVertexArrays(1, &VAO1);
+    glDeleteBuffers(1, &VBO1);
+    glDeleteVertexArrays(1, &VAO2);
+    glDeleteBuffers(1, &VBO2);
+    glDeleteProgram(shaderProgram);
 
     glfwTerminate();
     return 0;
