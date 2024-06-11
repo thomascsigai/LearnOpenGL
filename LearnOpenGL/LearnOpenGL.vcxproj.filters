@@ -26,6 +26,8 @@
     <None Include="res\shaders\basicColorInLayout.vs" />
     <None Include="res\shaders\basicColorIn.fs" />
     <None Include="res\shaders\basicColorUniform.fs" />
+    <None Include="res\shaders\reversedBasic.vs" />
+    <None Include="res\shaders\offsetBasic.vs" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="res\shaders\basic.vs">

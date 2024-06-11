@@ -54,6 +54,7 @@ int main()
     glGenVertexArrays(2, VAOs);
     glGenBuffers(2, VBOs);
 
+
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     glBindVertexArray(VAOs[0]);
 
@@ -70,7 +71,6 @@ int main()
     glEnableVertexAttribArray(1);
 
 
-
     // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
     glBindVertexArray(VAOs[1]);
 
@@ -85,7 +85,7 @@ int main()
 
 
     Shader firstTriangleShader("res/shaders/basicColorInLayout.vs", "res/shaders/basicColorIn.fs");
-    Shader secondTriangleShader("res/shaders/basic.vs", "res/shaders/basicColorUniform.fs");
+    Shader secondTriangleShader("res/shaders/offsetBasic.vs", "res/shaders/basicColorUniform.fs");
 
     // render loop
     // ----------------------------------------
@@ -108,6 +108,7 @@ int main()
         
         secondTriangleShader.use();
         secondTriangleShader.setVec4("ourColor", 0.0f, greenValue, 0.0f, 1.0f);
+        secondTriangleShader.setFloat("hOffset", 0.1f);
 
         glBindVertexArray(VAOs[1]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
