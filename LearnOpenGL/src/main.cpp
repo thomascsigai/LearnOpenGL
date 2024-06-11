@@ -45,9 +45,9 @@ int main()
     };
 
     float verticesSecondTriangle[] = {
-    0.8f, -0.5f, 0.0f,
-    0.5f, 0.5f, 0.0f,
-    0.2f,  -0.5f, 0.0f
+    -0.5f, -0.5f, 0.0f,
+     0.5f, -0.5f, 0.0f,
+     0.0f,  0.5f, 0.0f
     };
 
     unsigned int VAOs[2], VBOs[2];
@@ -85,7 +85,7 @@ int main()
 
 
     Shader firstTriangleShader("res/shaders/basicColorInLayout.vs", "res/shaders/basicColorIn.fs");
-    Shader secondTriangleShader("res/shaders/offsetBasic.vs", "res/shaders/basicColorUniform.fs");
+    Shader secondTriangleShader("res/shaders/basicOutputPos.vs", "res/shaders/basicOutputPos.fs");
 
     // render loop
     // ----------------------------------------
@@ -107,8 +107,6 @@ int main()
         float greenValue = (sin(timeValue) / 2.0f) + 0.5f;
         
         secondTriangleShader.use();
-        secondTriangleShader.setVec4("ourColor", 0.0f, greenValue, 0.0f, 1.0f);
-        secondTriangleShader.setFloat("hOffset", 0.1f);
 
         glBindVertexArray(VAOs[1]);
         glDrawArrays(GL_TRIANGLES, 0, 3);
