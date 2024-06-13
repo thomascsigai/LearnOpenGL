@@ -24,7 +24,7 @@
     <ClCompile Include="src\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\basic.fs" />
+    <None Include="res\shaders\basicTexture.fs" />
     <None Include="res\shaders\basicColorIn.fs" />
     <None Include="res\shaders\basicColorInLayout.vs" />
     <None Include="res\shaders\basicColorUniform.fs" />
@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\stb_image.h" />
-    <ClInclude Include="res\shaders\basic.vs" />
+    <ClInclude Include="res\shaders\basicTexture.vs" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\container.jpg" />

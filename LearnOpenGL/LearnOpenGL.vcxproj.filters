@@ -33,10 +33,10 @@
     <None Include="res\shaders\offsetBasic.vs" />
     <None Include="res\shaders\basicOutputPos.vs" />
     <None Include="res\shaders\basicOutputPos.fs" />
-    <None Include="res\shaders\basic.fs" />
+    <None Include="res\shaders\basicTexture.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="res\shaders\basic.vs">
+    <ClInclude Include="res\shaders\basicTexture.vs">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="include\stb_image.h">
