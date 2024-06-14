@@ -38,7 +38,8 @@ int main()
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    Shader firstTriangleShader("res/shaders/basicTexture.vs", "res/shaders/basicTexture.fs");
+    Shader firstBoxShader("res/shaders/basicTexture.vs", "res/shaders/basicTexture.fs");
+    Shader secondBoxShader("res/shaders/basicTexture.vs", "res/shaders/basicTexture.fs");
 
     // loading and creating texture
     // ----------------------------------------
@@ -132,10 +133,6 @@ int main()
     glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
     glEnableVertexAttribArray(2);
 
-    glm::mat4 trans = glm::mat4(1.0f);
-    trans = glm::rotate(trans, glm::radians(90.0f), glm::vec3(0.0, 0.0, 1.0));
-    trans = glm::scale(trans, glm::vec3(0.5, 0.5, 0.5));
-
     // uncomment this call to draw in wireframe polygons.
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -150,10 +147,14 @@ int main()
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        firstTriangleShader.use();
-        firstTriangleShader.setInt("texture1", 0);
-        firstTriangleShader.setInt("texture2", 1);
-        unsigned int transformLoc = glGetUniformLocation(firstTriangleShader.ID, "transform");
+        glm::mat4 trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(0.5f, -0.5f, 0.0f));
+        trans = glm::rotate(trans, (float)glfwGetTime(), glm::vec3(0.0f, 0.0f, 1.0f));
+
+        firstBoxShader.use();
+        firstBoxShader.setInt("texture1", 0);
+        firstBoxShader.setInt("texture2", 1);
+        unsigned int transformLoc = glGetUniformLocation(firstBoxShader.ID, "transform");
         glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
 
         glActiveTexture(GL_TEXTURE0);
@@ -162,6 +163,19 @@ int main()
         glBindTexture(GL_TEXTURE_2D, texture2);
 
         glBindVertexArray(VAO);
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+
+        trans = glm::mat4(1.0f);
+        trans = glm::translate(trans, glm::vec3(-0.5f, 0.5f, 0.0f));
+        trans = glm::scale(trans, glm::vec3(sin((float)glfwGetTime()), sin((float)glfwGetTime()), sin((float)glfwGetTime())));
+
+        secondBoxShader.use();
+        secondBoxShader.setInt("texture1", 0);
+        secondBoxShader.setInt("texture2", 1);
+
+        transformLoc = glGetUniformLocation(secondBoxShader.ID, "transform");
+        glUniformMatrix4fv(transformLoc, 1, GL_FALSE, glm::value_ptr(trans));
+
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
         // check and call events and swap the buffers
