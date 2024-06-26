@@ -1,5 +1,5 @@
 # LearnOpenGL
-![OpenGL]([https://blog.dyma.fr/content/images/2023/05/csharp1200x628.png](https://eu-central-1.linodeobjects.com/wagtail-production/images/openGL_blue.eec549e6.fill-620x220-c100.jpg))
+![OpenGL](https://eu-central-1.linodeobjects.com/wagtail-production/images/openGL_blue.eec549e6.fill-620x220-c100.jpg))
 
 This repository contains the code to complete the tutorials from the [LearnOpenGL](https://learnopengl.com/) website. The aim is to provide a solid foundation in OpenGL by implementing all the examples and exercises from the site. Currently, only the "Getting Started" section has been completed.
 
