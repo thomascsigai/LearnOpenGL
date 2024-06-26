@@ -1,5 +1,5 @@
 # LearnOpenGL
-![OpenGL](https://eu-central-1.linodeobjects.com/wagtail-production/images/openGL_blue.eec549e6.fill-620x220-c100.jpg))
+![OpenGL](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Opengl-logo.svg/1200px-Opengl-logo.svg.png?20230524144527)
 
 This repository contains the code to complete the tutorials from the [LearnOpenGL](https://learnopengl.com/) website. The aim is to provide a solid foundation in OpenGL by implementing all the examples and exercises from the site. Currently, only the "Getting Started" section has been completed.
 
