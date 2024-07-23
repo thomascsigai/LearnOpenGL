@@ -20,6 +20,8 @@ This project is based on the "Getting Started" chapters from the LearnOpenGL tut
 - **Coordinate Systems**: Understand and implement local, world, view, and clip space transformations.
 - **Camera**: Implement a basic camera to navigate the 3D scene.
 
+![gettingStarted (2)](https://github.com/thomascsigai/LearnOpenGL/assets/26554292/cccf5145-4c65-4fd4-ad74-7fb8865c1091)
+
 ## 📋 Prerequisites
 
 - C++ compiler (e.g., g++, clang++)
@@ -39,3 +41,4 @@ This project is based on the "Getting Started" chapters from the LearnOpenGL tut
 - [LinkedIn](https://www.linkedin.com/in/thomas-csigai/)
 - [Itch.io](https://thomas-csigai.itch.io/)
 - [Website](https://thomascsigai.github.io/)
+
